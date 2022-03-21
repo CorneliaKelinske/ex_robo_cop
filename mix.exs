@@ -7,22 +7,46 @@ defmodule ExRoboCop.MixProject do
       version: "0.1.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
+      build_embedded: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps()
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
+   # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
     ]
   end
 
+  defp description do
+    """
+    A simple captcha text generator using Rust
+    """
+  end
+
+  defp package do
+    [
+      maintainers: ["Cornelia Kelinske"],
+      licenses: ["MIT"],
+      links: %{github: "https://github.com/corneliakelinske/ex_robo_cop"},
+      files: [
+        "lib/ex_robo_cop.ex",
+        "lib/ex_robo_cop",
+        "native/rustcaptcha",
+        "mix.exs",
+        "README.md"
+      ]
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:rustler, "~> 0.22.2"},
+      {:uuid, "~> 1.1"}
     ]
   end
 end

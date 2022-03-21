@@ -1,0 +1,15 @@
+[package]
+name = "rustcaptcha"
+version = "0.1.0"
+authors = []
+edition = "2018"
+
+[lib]
+name = "rustcaptcha"
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+rustler = "0.22.2"
+captcha = "0.0.8"
+base64 = "0.13.0"
