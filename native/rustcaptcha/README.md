@@ -8,7 +8,7 @@
 
 ```elixir
 defmodule RustCaptcha do
-    use Rustler, otp_app: :the_brogrammer, crate: "rustcaptcha"
+    use Rustler, otp_app: :ex_robo_cop, crate: "rustcaptcha"
 
     # When your NIF is loaded, it will override this function.
     def add(_a, _b), do: :erlang.nif_error(:nif_not_loaded)

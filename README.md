@@ -20,3 +20,7 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ex_robo_cop>.
 
 # ex_robo_cop
+
+ExRoboCop
+ExRoboCop.Captcha
+ExRoboCop.Cache

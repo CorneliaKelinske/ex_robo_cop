@@ -3,16 +3,15 @@ defmodule ExRoboCop do
   Documentation for `ExRoboCop`.
   """
 
-  @doc """
-  Hello world.
+  def create_captcha do
+    ExRoboCop.RustCaptcha.generate
+  end
 
-  ## Examples
+  def get_captcha_id(captcha_text) do
+    ExRoboCop.SecretAnswer.check_in(captcha_text)
+  end
 
-      iex> ExRoboCop.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def start do
+    {ExRoboCop.SecretAnswer, %{}}
   end
 end
