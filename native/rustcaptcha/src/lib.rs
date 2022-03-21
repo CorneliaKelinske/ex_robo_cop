@@ -7,4 +7,4 @@ fn generate() -> Option<(String, String)> {
     }
 }
 
-rustler::init!("Elixir.RustCaptcha", [generate]);
+rustler::init!("Elixir.ExRoboCop.RustCaptcha", [generate]);
