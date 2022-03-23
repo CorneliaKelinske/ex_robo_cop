@@ -12,8 +12,8 @@ defmodule ExRoboCop do
     ExRoboCop.RustCaptcha.generate()
   end
 
-  @spec create_form_ID(captcha_text) :: uuid
-  def create_form_ID(captcha_text) do
+  @spec create_form_id(captcha_text) :: uuid
+  def create_form_id(captcha_text) do
     ExRoboCop.SecretAnswer.check_in(captcha_text)
   end
 

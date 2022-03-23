@@ -50,7 +50,9 @@ defmodule ExRoboCop.MixProject do
     [
       {:rustler, "~> 0.22.2"},
       {:uuid, "~> 1.1"},
-      {:dialyxir, "~> 1.1", only: :test}
+      {:dialyxir, "~> 1.1", only: [:test], runtime: false},
+      {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 end
