@@ -11,7 +11,6 @@ The use of this library requires the installation of Rust.
 
 Thank you to [Alan Vardy](https://github.com/alanvardy) for writing the Rust code.
 
-
 ## Installation
 
 Add the package to your `mix.exs` file:
@@ -24,15 +23,16 @@ def deps do
 end
 ```
 
-Add the application to your supervision tree in the `application.ex` file:
+Add the application to your supervision tree in the `application.ex` file, this is the GenServer that keeps track of the correct captcha answer and the form ID:
 
 ``` elixir
-children = [ExRoboCop.start()
+children = [
+    ExRoboCop.start()
+    ... other children
     ]
 ```
 
 And install Rust on your computer.
-
 
 ## Usage
 
@@ -67,9 +67,6 @@ In the `ContactController` of my personal projects, the `new/2` function will ty
   end
 ```
 
-
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ex_robo_cop>.
-
-

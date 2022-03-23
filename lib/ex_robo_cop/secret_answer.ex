@@ -8,24 +8,29 @@ defmodule ExRoboCop.SecretAnswer do
 
   # Client
 
+  @spec start_link(map) :: :ignore | {:error, any} | {:ok, pid}
   def start_link(%{}) do
     GenServer.start_link(__MODULE__, %{}, name: __MODULE__)
   end
 
+  @spec check_in(String.t()) :: String.t()
   def check_in(captcha_text) do
     GenServer.call(__MODULE__, {:check_in, captcha_text})
   end
 
+  @spec check_out({String.t(), String.t()}) :: :error | {:error, :wrong_captcha} | :ok
   def check_out({text, form_id}) do
     GenServer.call(__MODULE__, {:check_out, text, form_id})
   end
 
   # Server
 
+  @impl GenServer
   def init(_) do
     {:ok, %{}}
   end
 
+  @impl GenServer
   def handle_call({:check_in, captcha_text}, _from, state) do
     id = UUID.uuid4()
     state = Map.put(state, id, captcha_text)

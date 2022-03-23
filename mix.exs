@@ -8,13 +8,16 @@ defmodule ExRoboCop.MixProject do
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       build_embedded: Mix.env() == :prod,
+      preferred_cli_env: [
+        dialyzer: :test
+      ],
       description: description(),
       package: package(),
       deps: deps()
     ]
   end
 
-   # Run "mix help compile.app" to learn about applications.
+  # Run "mix help compile.app" to learn about applications.
   def application do
     [
       extra_applications: [:logger]
@@ -46,7 +49,8 @@ defmodule ExRoboCop.MixProject do
   defp deps do
     [
       {:rustler, "~> 0.22.2"},
-      {:uuid, "~> 1.1"}
+      {:uuid, "~> 1.1"},
+      {:dialyxir, "~> 1.1", only: :test}
     ]
   end
 end
