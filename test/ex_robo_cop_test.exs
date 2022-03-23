@@ -21,4 +21,19 @@ defmodule ExRoboCopTest do
       assert %{^form_id => "CAPTCHA_TEXT"} = :sys.get_state(ExRoboCop.SecretAnswer)
     end
   end
+
+  describe "not_a_robot/1" do
+
+    test "returns :ok if the answer given by the user matches the captcha_text" do
+      start_supervised!(ExRoboCop.start())
+      assert form_id = ExRoboCop.create_form_id("CAPTCHA_TEXT")
+      assert :ok = ExRoboCop.not_a_robot?({"CAPTCHA_TEXT", form_id})
+    end
+
+    test "returns {:error, :wrong_captcha} if the answer given by the user does not match the captcha_text" do
+      start_supervised!(ExRoboCop.start())
+      assert form_id = ExRoboCop.create_form_id("CAPTCHA_TEXT")
+      assert {:error, :wrong_captcha} = ExRoboCop.not_a_robot?({"WRONG ANSWER", form_id})
+    end
+  end
 end
