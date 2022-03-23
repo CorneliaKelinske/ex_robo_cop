@@ -36,12 +36,36 @@ And install Rust on your computer.
 
 ## Usage
 
-An example for how to use `ex_robo_cop` in a contact form on a website:
+Assuming that you want to use `ex_robo_cop` to add a captcha to the content form on your website,
+and that you are working with a `contact_controller.ex`, a `contact_view.ex` and a `new.html.heex` file, you can follow the steps below:
 
-Add the `ex_robo_cop` code to the `contact_controller.ex` file:
+First of all, you need to create the captcha text, the captcha image and the id of the new contact form in the
+`ContactController.new/2` function:
 
+```elixir
+{captcha_text, captcha_image} = ExRoboCop.create_captcha()
 
+form_id = ExRoboCop.create_form_ID(captcha_text)
+```
 
+The `form_id` and the `captcha_image` will then have to be passed into the assigns of the `render\3` function.
+
+In the `ContactController` of my personal projects, the `new/2` function will typically look like this:
+
+```elixir
+ def new(conn, _params) do
+    with {captcha_text, captcha_image} <- ExRoboCop.create_captcha() do
+      form_id = ExRoboCop.create_form_ID(captcha_text)
+
+      render(conn, "new.html",
+        page_title: "Contact",
+        changeset: Contact.changeset(%{}),
+        form_id: form_id,
+        captcha_image: captcha_image
+      )
+    end
+  end
+```
 
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
