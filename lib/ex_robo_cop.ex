@@ -7,7 +7,7 @@ defmodule ExRoboCop do
     ExRoboCop.RustCaptcha.generate
   end
 
-  def get_captcha_id(captcha_text) do
+  def create_form_ID(captcha_text) do
     ExRoboCop.SecretAnswer.check_in(captcha_text)
   end
 
