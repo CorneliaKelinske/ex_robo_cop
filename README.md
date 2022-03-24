@@ -36,12 +36,14 @@ And install Rust on your computer.
 
 ## Usage
 
-`create_captcha\0`  creates a captcha text and a captcha image
+`create_captcha\0`
+creates a captcha text and a captcha image
 
-`create_form_id\1`  creates a unique ID for a contact form and stores it in combination with the current captcha text
+`create_form_id\1` 
+creates a unique ID for a contact form and stores it in combination with the current captcha text
 
-`not_a_robot?\1`    checks whether the combination of the user's answer to the "Not a Robot" question and the form ID match
-                    the form ID and captcha text stored in the GenServer
+`not_a_robot?\1`   
+checks whether the combination of the user's answer to the "Not a Robot" question and the form ID match the form ID and captcha text stored in the GenServer
 
 
 ## Example
