@@ -128,12 +128,23 @@ Now, you can pass the user's answer and the form_id as a tuple into `ExRoboCop.n
 the answer matches the captcha text stored for the respective `form_id` in the GenServer.
 
 ```elixir
-  def not_a_robot?({captcha_answer, form_id}) do
-    ExRoboCop.SecretAnswer.check_out({captcha_answer, form_id})
-  end
+  :ok = not_a_robot?({captcha_answer, form_id})  
 ```
 
-By calling `ExRoboCop.not_a_robot?\1` the controller verifies in the `create
+
+## Production
+
+Since `ex_robo_cop` requires Rust, you will need to add the command to install Rust to your `Dockerfile`:
+
+```
+# install build dependencies
+RUN apt-get update -y && apt-get install -y build-essential git rustc\
+    && apt-get clean && rm -f /var/lib/apt/lists/*_*
+```
+
+
+
+
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
