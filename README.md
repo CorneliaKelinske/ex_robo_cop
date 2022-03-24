@@ -11,6 +11,9 @@ The use of this library requires the installation of Rust.
 
 Thank you to [Alan Vardy](https://github.com/alanvardy) for writing the Rust code.
 
+Documentation can be found at [https://hexdocs.pm/ex_robo_cop](https://hexdocs.pm/ex_robo_cop).
+This library is in use at [connie.codes](https://connie.codes/).
+
 ## Installation
 
 Add the package to your `mix.exs` file:
@@ -146,6 +149,4 @@ RUN apt-get update -y && apt-get install -y build-essential git rustc\
 
 
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ex_robo_cop>.
+

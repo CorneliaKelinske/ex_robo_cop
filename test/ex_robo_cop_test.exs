@@ -2,6 +2,11 @@ defmodule ExRoboCopTest do
   use ExUnit.Case
   doctest ExRoboCop
 
+  setup do
+    start_supervised!(ExRoboCop.start())
+    :ok
+  end
+
   describe "create_captcha/0" do
     test "creates a captcha text and captcha image" do
       assert {captcha_text, captcha_image} = ExRoboCop.create_captcha()
@@ -14,8 +19,6 @@ defmodule ExRoboCopTest do
 
   describe "create_form_id/1" do
     test "creates a form ID" do
-      start_supervised!(ExRoboCop.start())
-
       assert form_id = ExRoboCop.create_form_id("CAPTCHA_TEXT")
       assert is_binary(form_id)
       assert %{^form_id => "CAPTCHA_TEXT"} = :sys.get_state(ExRoboCop.SecretAnswer)
@@ -23,17 +26,18 @@ defmodule ExRoboCopTest do
   end
 
   describe "not_a_robot/1" do
-
     test "returns :ok if the answer given by the user matches the captcha_text" do
-      start_supervised!(ExRoboCop.start())
       assert form_id = ExRoboCop.create_form_id("CAPTCHA_TEXT")
       assert :ok = ExRoboCop.not_a_robot?({"CAPTCHA_TEXT", form_id})
     end
 
     test "returns {:error, :wrong_captcha} if the answer given by the user does not match the captcha_text" do
-      start_supervised!(ExRoboCop.start())
       assert form_id = ExRoboCop.create_form_id("CAPTCHA_TEXT")
       assert {:error, :wrong_captcha} = ExRoboCop.not_a_robot?({"WRONG ANSWER", form_id})
+    end
+
+    test "returns :error if the ID does not exist" do
+      assert :error = ExRoboCop.not_a_robot?({"WRONG ANSWER", "notarealid"})
     end
   end
 end
