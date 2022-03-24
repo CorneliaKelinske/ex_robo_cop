@@ -1,6 +1,6 @@
 # ExRoboCop
 
-ExRoboCop is a simple captcha library that can be used as an alternative to reCaptcha to verify that a person is 
+ExRoboCop is a lightweight captcha library that can be used as an alternative to reCaptcha to verify that a person is 
 indeed a person and not a robot.
 
 The library uses Rust to create a captcha image and corresponding text. 
