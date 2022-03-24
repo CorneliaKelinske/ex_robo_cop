@@ -36,6 +36,16 @@ And install Rust on your computer.
 
 ## Usage
 
+`create_captcha\0`  creates a captcha text and a captcha image
+
+`create_form_id\1`  creates a unique ID for a contact form and stores it in combination with the current captcha text
+
+`not_a_robot?\1`    checks whether the combination of the user's answer to the "Not a Robot" question and the form ID match
+                    the form ID and captcha text stored in the GenServer
+
+
+## Example
+
 Assuming that you want to use `ex_robo_cop` to add a captcha to the content form on your website,
 and that you are working with a `contact_controller.ex`, a `contact_view.ex` and a `new.html.heex` file, you can follow the steps below:
 
@@ -105,7 +115,23 @@ as a hidden input field through which the `form_id` can be passed back to the co
 <%= text_input f, :form_id, type: "text", hidden: true, value: @form_id %>
 ```
 
+When the form is submitted, the `form_id` and the user's answer are sent back to the controller as part of the form content.
+I suggest pattern matching on them in the head of the controller's `create/2` function for example like this:
 
+```elixir
+ def create(conn, %{"content" => %{"not_a_robot" => captcha_answer, "form_id" => form_id} = message_params}) do 
+```
+
+Now, you can pass the user's answer and the form_id as a tuple into `ExRoboCop.not_a_robot?\1` in order to verify that
+the answer matches the captcha text stored for the respective `form_id` in the GenServer.
+
+```elixir
+  def not_a_robot?({captcha_answer, form_id}) do
+    ExRoboCop.SecretAnswer.check_out({captcha_answer, form_id})
+  end
+```
+
+By calling `ExRoboCop.not_a_robot?\1` the controller verifies in the `create
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
