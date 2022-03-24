@@ -45,9 +45,10 @@ First of all, you need to create the captcha text, the captcha image and the id 
 ```elixir
 {captcha_text, captcha_image} = ExRoboCop.create_captcha()
 
-form_id = ExRoboCop.create_form_ID(captcha_text)
+form_id = ExRoboCop.create_form_id(captcha_text)
 ```
 
+The call to `ExRoboCop.create_form_id\1` stores the `form_id` and the `captcha_text` as a key-value pair in the GenServer.
 The `form_id` and the `captcha_image` will then have to be passed into the assigns of the `render\3` function.
 
 In the `ContactController` of my personal projects, the `new/2` function will typically look like this:
@@ -67,8 +68,7 @@ In the `ContactController` of my personal projects, the `new/2` function will ty
   end
 ```
 
-The next step is rendering the captcha image in the `.heex` template. 
-
+The next step is rendering the captcha image in the contact form in your `.heex` template. 
 Since the image data is passed into the `render/3` assigns as binary, it needs to be converted in order to be displayed.
 
 In Phoenix 1.6, you can add the following function to your corresponding `view.ex` file:
@@ -85,11 +85,26 @@ and then call this function in your `heex` template:
 <%= display_captcha(@captcha_image) %>
 ```
 
-In Phoenix 1.5, you can do the conversion directly in the `.eex` template:
+In Phoenix 1.5, you can convert the binary directly in the `.eex` template:
 
 ```html
 <img src="data:image/png;base64,<%= Base.encode64(@captcha_image)%>"> 
 ```
+
+The form also needs to include an input field for users to input the letters they see in the captcha image as well
+as a hidden input field through which the `form_id` can be passed back to the controller when the form is submitted:
+
+```html
+<div class="field">
+  <%= label f, :not_a_robot, class: "label"%>
+  <div class="control">
+    <%= text_input f, :not_a_robot, class: "input", type: "text", placeholder: "Please enter the letters shown below" %>
+  </div>
+</div>
+
+<%= text_input f, :form_id, type: "text", hidden: true, value: @form_id %>
+```
+
 
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
