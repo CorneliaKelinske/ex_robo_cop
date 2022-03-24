@@ -67,6 +67,31 @@ In the `ContactController` of my personal projects, the `new/2` function will ty
   end
 ```
 
+The next step is rendering the captcha image in the `.heex` template. 
+
+Since the image data is passed into the `render/3` assigns as binary, it needs to be converted in order to be displayed.
+
+In Phoenix 1.6, you can add the following function to your corresponding `view.ex` file:
+
+```elixir
+  def display_captcha(captcha_image) do
+    content_tag(:img, "", src: "data:image/png;base64," <> captcha_image)
+  end
+```
+
+and then call this function in your `heex` template:
+
+```html
+<%= display_captcha(@captcha_image) %>
+```
+
+In Phoenix 1.5, you can do the conversion directly in the `.eex` template:
+
+```html
+<img src="data:image/png;base64,<%= Base.encode64(@captcha_image)%>"> 
+```
+
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/ex_robo_cop>.
