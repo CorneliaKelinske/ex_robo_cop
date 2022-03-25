@@ -1,5 +1,9 @@
 # ExRoboCop
 
+[![Build Status](https://github.com/corneliakelinske/ex_robo_cop/Coveralls/badge.svg)](https://github.com/corneliakelinske/the_little_thinkers_space) 
+[![Build Status](https://github.com/corneliakelinske/ex_robo_cop/workflows/Credo/badge.svg)](https://github.com/corneliakelinske/the_little_thinkers_space) 
+
+
 ExRoboCop is a lightweight captcha library that can be used as an alternative to reCaptcha to verify that a person is 
 indeed a person and not a robot.
 
