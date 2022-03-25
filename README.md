@@ -1,6 +1,6 @@
 # ExRoboCop
 
-[![Build Status](https://github.com/corneliakelinske/ex_robo_cop/Coveralls/badge.svg)](https://github.com/corneliakelinske/ex_robo_cop) 
+[![Build Status](https://github.com/corneliakelinske/ex_robo_cop/workflows/Coveralls/badge.svg)](https://github.com/corneliakelinske/ex_robo_cop) 
 [![Build Status](https://github.com/corneliakelinske/ex_robo_cop/workflows/Credo/badge.svg)](https://github.com/corneliakelinske/ex_robo_cop) 
 
 
