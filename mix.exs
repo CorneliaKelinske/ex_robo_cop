@@ -8,12 +8,19 @@ defmodule ExRoboCop.MixProject do
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       build_embedded: Mix.env() == :prod,
+      deps: deps(),
       preferred_cli_env: [
         dialyzer: :test
       ],
+
+      # Hex
       description: description(),
       package: package(),
-      deps: deps()
+
+      #Docs
+      name: "ExRoboCop",
+      docs: docs()
+
     ]
   end
 
@@ -26,7 +33,7 @@ defmodule ExRoboCop.MixProject do
 
   defp description do
     """
-    A simple captcha text generator using Rust
+    A lightweight captcha text generator using Rust
     """
   end
 
@@ -45,6 +52,21 @@ defmodule ExRoboCop.MixProject do
     ]
   end
 
+  defp docs do
+    [
+      source_ref: "v#{@version}",
+      main: "README",
+      canonical: "http://hexdocs.pm/ex_robo_cop",
+      source_url: "https://github.com/CorneliaKelinske/ex_robo_cop",
+      filter_prefix: "ExRoboCop",
+      extras: [
+        "README.md": [filename: "README"],
+        "CHANGELOG.md": [filename: "CHANGELOG"],
+        "CSS.md": [filename: "CSS"]
+      ]
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
@@ -52,7 +74,8 @@ defmodule ExRoboCop.MixProject do
       {:uuid, "~> 1.1"},
       {:dialyxir, "~> 1.1", only: [:test], runtime: false},
       {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:ex_doc, "~> 0.28.3", only: :dev, runtime: false}
     ]
   end
 end
