@@ -1,0 +1,45 @@
+name: Coveralls
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:11.6
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            deps
+            _build
+          key: ${{ runner.os }}-mix-coveralls-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-mix-coveralls-
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: 24.2
+          elixir-version: 1.13.3
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: FedericoCarboni/setup-ffmpeg@v1
+        id: setup-ffmpeg
+      - uses: mfinelli/setup-imagemagick@v1
+      - run: mix deps.get
+      - run: mkdir priv/static/uploads
+      - run: mkdir priv/static/uploads/test
+      - run: MIX_ENV=test mix coveralls.json
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v1
+
