@@ -54,7 +54,8 @@ defmodule ExRoboCop.MixProject do
         "lib/ex_robo_cop",
         "native/rustcaptcha",
         "mix.exs",
-        "README.md"
+        "README.md",
+        "CHANGELOG.md"
       ]
     ]
   end
@@ -69,7 +70,6 @@ defmodule ExRoboCop.MixProject do
       extras: [
         "README.md": [filename: "README"],
         "CHANGELOG.md": [filename: "CHANGELOG"]
-        # "CSS.md": [filename: "CSS"]
       ]
     ]
   end
