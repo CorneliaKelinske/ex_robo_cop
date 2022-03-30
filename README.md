@@ -4,6 +4,7 @@
 [![Build Status](https://github.com/corneliakelinske/ex_robo_cop/workflows/Credo/badge.svg)](https://github.com/corneliakelinske/ex_robo_cop)
 [![codecov](https://codecov.io/gh/corneliakelinske/ex_robo_cop/branch/main/graph/badge.svg?token=P3O42SF7VJ)](https://codecov.io/gh/corneliakelinske/ex_robo_cop)
 [![hex.pm](http://img.shields.io/hexpm/v/ex_robo_cop.svg?style=flat)](https://hex.pm/packages/ex_robo_cop)
+[![Build Status](https://github.com/corneliakelinske/ex_robo_cop/workflows/Dialyzer/badge.svg)](https://github.com/corneliakelinske/ex_robo_cop) 
 
 
 ExRoboCop is a lightweight captcha library that can be used as an alternative to reCaptcha to verify that a person is 
