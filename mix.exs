@@ -15,12 +15,15 @@ defmodule ExRoboCop.MixProject do
       preferred_cli_env: [
         dialyzer: :test,
         coveralls: :test,
+        doctor: :test,
+        credo: :test,
+        docs: :test,
+        check: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test,
         "coveralls.lcov": :test
       ],
-
       dialyzer: [
         plt_add_apps: [:ex_unit, :mix],
         list_unused_filters: true,
@@ -87,11 +90,11 @@ defmodule ExRoboCop.MixProject do
     [
       {:rustler, "~> 0.22.2"},
       {:uuid, "~> 1.1"},
-      {:dialyxir, "~> 1.1", only: [:test], runtime: false},
-      {:ex_check, "~> 0.14.0", only: [:dev], runtime: false},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:ex_doc, "~> 0.28.3", only: :dev, runtime: false},
-      {:doctor, "~> 0.18.0", only: :dev},
+      {:dialyxir, "~> 1.1", only: :test, runtime: false},
+      {:ex_check, "~> 0.14.0", only: :test, runtime: false},
+      {:credo, "~> 1.5", only: :test, runtime: false},
+      {:ex_doc, "~> 0.28.3", only: [:test, :dev], runtime: false},
+      {:doctor, "~> 0.18.0", only: :test},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end
