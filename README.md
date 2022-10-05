@@ -21,6 +21,10 @@ Thank you to [Alan Vardy](https://github.com/alanvardy) for writing the Rust cod
 Documentation can be found at [https://hexdocs.pm/ex_robo_cop](https://hexdocs.pm/ex_robo_cop).
 This library is in use at [connie.codes](https://connie.codes/).
 
+And here is an example of a captcha image:
+
+![Example captcha](Captcha.jpg)
+
 ## Installation
 
 Add the package to your `mix.exs` file:

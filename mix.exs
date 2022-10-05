@@ -1,7 +1,7 @@
 defmodule ExRoboCop.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [
@@ -88,13 +88,13 @@ defmodule ExRoboCop.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~> 0.22.2"},
+      {:rustler, "~> 0.26.0"},
       {:uuid, "~> 1.1"},
       {:dialyxir, "~> 1.1", only: :test, runtime: false},
       {:ex_check, "~> 0.14.0", only: :test, runtime: false},
       {:credo, "~> 1.5", only: :test, runtime: false},
       {:ex_doc, "~> 0.28.3", only: [:test, :dev], runtime: false},
-      {:doctor, "~> 0.18.0", only: :test},
+      {:doctor, "~> 0.19.0", only: :test},
       {:excoveralls, "~> 0.10", only: :test}
     ]
   end
