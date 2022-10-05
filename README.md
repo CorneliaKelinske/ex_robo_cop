@@ -23,7 +23,7 @@ This library is in use at [connie.codes](https://connie.codes/).
 
 And here is an example of a captcha image:
 
-[![Example captcha](Captcha.jpg)]
+![Example captcha](Captcha.jpg)
 
 ## Installation
 
