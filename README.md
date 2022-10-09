@@ -48,6 +48,24 @@ children = [
 
 And install Rust on your computer.
 
+## For Mac users
+
+If you have Rust installed but ExRoboCop fails to compile, try putting the following into your `~/.cargo/config`:
+
+```
+[target.x86_64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
+
+[target.aarch64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
+```
+
 ## Usage
 
 `create_captcha\0`   
