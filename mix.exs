@@ -88,7 +88,7 @@ defmodule ExRoboCop.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~> 0.26.0"},
+      {:rustler, "~> 0.27.0"},
       {:uuid, "~> 1.1"},
       {:dialyxir, "~> 1.1", only: :test, runtime: false},
       {:ex_check, "~> 0.14.0", only: :test, runtime: false},
