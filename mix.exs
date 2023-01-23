@@ -91,7 +91,7 @@ defmodule ExRoboCop.MixProject do
       {:rustler, "~> 0.26.0"},
       {:uuid, "~> 1.1"},
       {:dialyxir, "~> 1.1", only: :test, runtime: false},
-      {:ex_check, "~> 0.14.0", only: :test, runtime: false},
+      {:ex_check, "~> 0.15.0", only: :test, runtime: false},
       {:credo, "~> 1.5", only: :test, runtime: false},
       {:ex_doc, "~> 0.28.3", only: [:test, :dev], runtime: false},
       {:doctor, "~> 0.21.0", only: :test},
