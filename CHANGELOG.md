@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v0.1.2 (2023-04-02)
 - Add instructions for compiling on Mac
 
 ## v0.1.1 (2022-10-05)
