@@ -1,6 +1,8 @@
 # Changelog
 - Update rust dependencies
 - Update mix dependencies
+- Add test to CI
+- Add test badge to README.md
 ## v0.1.2 (2023-04-02)
 - Add instructions for compiling on Mac
 
