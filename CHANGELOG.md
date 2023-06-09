@@ -1,5 +1,5 @@
 # Changelog
-
+- Update mix dependencies
 ## v0.1.2 (2023-04-02)
 - Add instructions for compiling on Mac
 
