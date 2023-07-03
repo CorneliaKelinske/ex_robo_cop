@@ -1,4 +1,6 @@
-# Changelog
+## Unreleased
+
+## v0.1.3 (2023-07-02)
 - Update rust dependencies
 - Update mix dependencies
 - Add test to CI
