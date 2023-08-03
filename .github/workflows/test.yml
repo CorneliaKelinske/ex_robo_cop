@@ -24,13 +24,6 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - uses: nanasess/setup-chromedriver@v1
-
-      - name: Start Chromedriver
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub --disable-gpu --no-sandbox --whitelisted-ips --disable-extensions --no-proxy-server --disable-software-rasterizer --headless &
-
       - name: Install Rebar & Hex
         run: mix local.hex --force && mix local.rebar --force
 
