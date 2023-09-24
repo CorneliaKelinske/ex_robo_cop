@@ -13,3 +13,4 @@ crate-type = ["cdylib"]
 rustler = "0.22.2"
 captcha = "0.0.8"
 base64 = "0.13.0"
+once_cell = "1.17.2"
