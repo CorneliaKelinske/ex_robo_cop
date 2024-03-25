@@ -10,6 +10,6 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-rustler = "0.22.2"
-captcha = "0.0.8"
-base64 = "0.13.0"
+rustler = "0.32.1"
+captcha = "0.0.9"
+base64 = "0.22.0"
