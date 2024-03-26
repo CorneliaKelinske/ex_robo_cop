@@ -345,6 +345,7 @@ version = "0.1.0"
 dependencies = [
  "base64 0.22.0",
  "captcha",
+ "regex",
  "rustler",
 ]
 

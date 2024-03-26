@@ -2,7 +2,7 @@
 name = "rustcaptcha"
 version = "0.1.0"
 authors = []
-edition = "2018"
+edition = "2021"
 
 [lib]
 name = "rustcaptcha"
@@ -13,3 +13,4 @@ crate-type = ["cdylib"]
 rustler = "0.32.1"
 captcha = "0.0.9"
 base64 = "0.22.0"
+regex = "1.10.4"
