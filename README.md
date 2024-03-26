@@ -34,7 +34,7 @@ Add the package to your `mix.exs` file:
 ```elixir
 def deps do
   [
-    {:ex_robo_cop, "~> 0.1.3"}
+    {:ex_robo_cop, "~> 0.1.4"}
   ]
 end
 ```
