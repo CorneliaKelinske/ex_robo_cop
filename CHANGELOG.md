@@ -1,5 +1,10 @@
 ## Unreleased
 
+## v0.1.4 (2024-03-26)
+- Update rust dependencies
+- Update mix dependencies
+- Update tool versions
+
 ## v0.1.3 (2023-07-02)
 - Update rust dependencies
 - Update mix dependencies
