@@ -27,3 +27,5 @@ ex_robo_cop-*.tar
 
 /dialyzer/*.plt
 /dialyzer/*.plt.hash
+
+.DS_STORE
