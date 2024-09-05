@@ -25,6 +25,12 @@ defmodule ExRoboCop do
     ExRoboCop.SecretAnswer.check_out({captcha_answer, form_id})
   end
 
+  @doc "Gets the secret answer for a given uuid; this can be useful for testing"
+  @spec get_answer_for_form_id(uuid) :: {:error, :form_id_not_found} | {:ok, String.t()}
+  def get_answer_for_form_id(form_id) do
+    ExRoboCop.SecretAnswer.check_out(form_id)
+  end
+
   @doc "Put in application children to start in supervision tree"
   @spec start :: {ExRoboCop.SecretAnswer, %{}}
   def start do

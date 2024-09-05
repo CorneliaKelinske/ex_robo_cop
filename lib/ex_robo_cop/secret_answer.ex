@@ -23,6 +23,11 @@ defmodule ExRoboCop.SecretAnswer do
     GenServer.call(__MODULE__, {:check_out, text, form_id})
   end
 
+  @spec check_out(String.t()) :: {:error, :form_id_not_found} | {:ok, String.t()}
+  def check_out(form_id) do
+    GenServer.call(__MODULE__, {:check_out, form_id})
+  end
+
   # Server
 
   @impl GenServer
@@ -35,6 +40,14 @@ defmodule ExRoboCop.SecretAnswer do
     id = UUID.uuid4()
     state = Map.put(state, id, captcha_text)
     {:reply, id, state}
+  end
+
+  @impl GenServer
+  def handle_call({:check_out, form_id}, _from, state) do
+    case Map.fetch(state, form_id) do
+      {:ok, answer} -> {:reply, {:ok, answer}, state}
+      _ -> {:reply, {:error, :form_id_not_found}, state}
+    end
   end
 
   def handle_call({:check_out, text, form_id}, _from, state) do

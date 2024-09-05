@@ -40,4 +40,15 @@ defmodule ExRoboCopTest do
       assert :error = ExRoboCop.not_a_robot?({"WRONG ANSWER", "notarealid"})
     end
   end
+
+  describe "get_answer_for_form_id/1" do
+    test "returns uuid for existing form ID" do
+      assert form_id = ExRoboCop.create_form_id("CAPTCHA_TEXT")
+      assert {:ok, "CAPTCHA_TEXT"} = ExRoboCop.get_answer_for_form_id(form_id)
+    end
+
+    test "returns {:error, :form_id not found} if form ID does not exist" do
+      assert {:error, :form_id_not_found} = ExRoboCop.get_answer_for_form_id("notarealid")
+    end
+  end
 end
