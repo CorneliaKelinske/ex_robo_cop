@@ -1,4 +1,5 @@
 ## Unreleased
+- Add function to return secret answer for form ID
 
 ## v0.1.4 (2024-03-26)
 - Update rust dependencies
