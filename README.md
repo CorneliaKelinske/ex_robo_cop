@@ -34,7 +34,7 @@ Add the package to your `mix.exs` file:
 ```elixir
 def deps do
   [
-    {:ex_robo_cop, "~> 0.1.4"}
+    {:ex_robo_cop, "~> 0.1.5"}
   ]
 end
 ```
@@ -79,6 +79,9 @@ creates a captcha text and a captcha image
 `not_a_robot?\1`   
 checks whether the combination of the user's answer to the "Not a Robot" question and the form ID match the form ID and captcha text stored in the GenServer
 
+`get_answer_for_form_id/1`
+returns the captcha text for a form ID. This can be a useful function for LiveView tests.
+
 
 ## Example
 
@@ -116,6 +119,16 @@ In the `ContactController` of my personal projects, the `new/2` function will ty
 
 The next step is rendering the captcha image in the contact form in your `.heex` template. 
 Since the image data is passed into the `render/3` assigns as binary, it needs to be converted in order to be displayed.
+
+In Phoenix 1.7, all you have to do is add the captcha image as an `img` tag to your `heex` or `live` file:
+
+```elixir
+<img
+            src={"data:image/png;base64," <> @captcha_image}
+            alt="CAPTCHA"
+            class="mt-2 block w-full rounded-lg"
+          />
+```
 
 In Phoenix 1.6, you can add the following function to your corresponding `view.ex` file:
 
@@ -165,6 +178,16 @@ the answer matches the captcha text stored for the respective `form_id` in the G
   :ok = not_a_robot?({captcha_answer, form_id})  
 ```
 
+## Use and tests in LiveView
+
+In LiveView, the `form_id` (or even the `captcha_text`) can be stored in the `Socket.assigns`. In order to test the success case, the `form_id` (or the `captcha_text`, if this is stored in the `Socket.assigns` instead) needs to be retrieved as part of the testing process: 
+
+```elixir
+{:ok, lv, _html} = live(conn, ~p"/contact")
+      socket_state = :sys.get_state(lv.pid)
+      form_id = socket_state.socket.assigns.form_id
+```
+
 
 ## Production
 
@@ -176,7 +199,23 @@ RUN apt-get update -y && apt-get install -y build-essential git rustc\
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
 ```
 
+If this does not work for your deploy, try this instead:
 
+```
+# install build dependencies
+RUN apt-get update -y && apt-get install -y build-essential curl git\
+    && apt-get clean && rm -f /var/lib/apt/lists/*_*
+
+# Get Rust
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+```
+
+## Known issues
+
+Especially when upgrading to a new version of this library, it may be that compilation fails. 
+Running `mix deps.clean ex_robo_cop` usually helps.
 
 
 
