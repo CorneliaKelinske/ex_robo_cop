@@ -94,7 +94,7 @@ defmodule ExRoboCop.MixProject do
       {:ex_check, "~> 0.16.0", only: :test, runtime: false},
       {:credo, "~> 1.7.7", only: :test, runtime: false},
       {:ex_doc, "~> 0.34.2", only: [:test, :dev], runtime: false},
-      {:doctor, "~> 0.21.0", only: :test},
+      {:doctor, "~> 0.22.0", only: :test},
       {:excoveralls, "~> 0.18.2", only: :test}
     ]
   end
