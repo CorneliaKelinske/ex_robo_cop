@@ -93,7 +93,7 @@ defmodule ExRoboCop.MixProject do
       {:dialyxir, "~> 1.4.3", only: :test, runtime: false},
       {:ex_check, "~> 0.16.0", only: :test, runtime: false},
       {:credo, "~> 1.7.7", only: :test, runtime: false},
-      {:ex_doc, "~> 0.34.2", only: [:test, :dev], runtime: false},
+      {:ex_doc, "~> 0.35.0", only: [:test, :dev], runtime: false},
       {:doctor, "~> 0.22.0", only: :test},
       {:excoveralls, "~> 0.18.2", only: :test}
     ]
