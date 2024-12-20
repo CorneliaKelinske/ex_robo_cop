@@ -1,3 +1,8 @@
+
+- Update Rustler
+- Update to Elixir 1.18
+- Update Erlang
+
 ## v0.1.5 (2024-09-16)
 - Add function to return secret answer for form ID
 - Update docs 
