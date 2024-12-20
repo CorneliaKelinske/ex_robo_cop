@@ -1,4 +1,4 @@
-
+## v0.1.6 (2024-12-20)
 - Update Rustler
 - Update to Elixir 1.18
 - Update Erlang
